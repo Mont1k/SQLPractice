@@ -1,0 +1,47 @@
+alter table employees add age int;
+update employees set age=date_part('year',age(current_date,date_of_birth));
+
+
+
+select * from employees;
+select count(*) from employees;
+select * from employees where id IN (4,34,93);
+select id, first_name,email, country from employees where email = 'ydoohanx@nbcnews.com' or email = 'bshreve1r@webmd.com' or country='China' or country ='Portugal';
+select id as employee_id, concat(first_name, ' ', last_name) as employee_full_name, salary as employee_salary from employees;
+select first_name, salary from employees where salary>=1000 and salary<3000;
+select id, salary from employees where id>=3 and id<=10 and salary>=300 and salary<=500;
+select  concat(first_name, ' ',last_name) as full_name, salary from employees where salary>=500 and salary<=2000;
+select name, country,age from employees where employees.age = (select min(employees.age) from employees);
+select  sum(age) from employees;
+select distinct salary from employees;
+select * from employees order by last_name asc;
+select * from employees order by last_name desc;
+alter table employees rename column first_name to name;
+alter table employees add constraint email_unique unique (email);
+alter table empl rename to employees;
+select distinct age from employees;
+select min(salary) from employees;
+select max(salary) from employees;
+select sum(salary)from employees;
+select sum(salary) from employees where age between 30 and 50;
+select sum(salary) from employees where id in (1, 2, 3, 4, 5);
+select avg(salary) from employees;
+select avg(age) from employees;
+select * from employees order by age asc ;
+select * from employees order by age desc;
+update employees set name = 'Макс', last_name = 'Максимов', email = 'maksmaksimov@gmail.com' where id =45;
+delete from employees where salary = (select min(salary) from employees);
+select name, last_name from employees where email like '%.com';
+select name, last_name from employees where substr(name, 2, 1)= 'a' or last_name like '%z';
+select gender, count(*) as count from employees group by gender;
+select name, last_name, date_of_birth from employees where date_of_birth between  '1970-03-07' and '2004-09-23';
+select concat(name, ' ', last_name) as fullname, country from employees where country ='Indonesia';
+select * from employees where country in ('Poland', 'Philippines' );
+select distinct country from employees;
+select  country, count(*) as kolvo from employees group by country;
+select concat(name, ' ',last_name) as full_name, employees.age from employees;
+select country, count(*) as workers from employees group by  country;
+select * from employees order by name asc limit 5 offset(select count(*) from employees)-5 ;
+select * from employees where id>50;
+update employees set name ='Misha' where name ='Bail';
+select avg(age) as avg from employees;
